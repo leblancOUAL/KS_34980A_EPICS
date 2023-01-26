@@ -1,18 +1,42 @@
-## configure/RELEASE: Location of external products
+# RELEASE - Location of external support modules
+#
+# IF YOU CHANGE ANY PATHS in this file or make API changes to
+# any modules it refers to, you should do a "make rebuild" in
+# this application's top level directory.
+#
+# The EPICS build process does not check dependencies against
+# any files from outside the application, so it is safest to
+# rebuild it completely if any modules it depends on change.
+#
+# Host- or target-specific settings can be given in files named
+#  RELEASE.$(EPICS_HOST_ARCH).Common
+#  RELEASE.Common.$(T_A)
+#  RELEASE.$(EPICS_HOST_ARCH).$(T_A)
+#
+# This file is parsed by both GNUmake and an EPICS Perl script,
+# so it may ONLY contain definititions of paths to other support
+# modules, variable definitions that are used in module paths,
+# and include statements that pull in other RELEASE files.
+# Variables may be used before their values have been set.
+# Build variables that are NOT used in paths should be set in
+# the CONFIG_SITE file.
 
-# Run "gnumake clean uninstall install" in the application top
-# directory whenever this file is changed or any external module
-# pointed to by this RELEASE file is rebuilt.
+# Variables and paths to dependent modules:
+#MODULES = /path/to/modules
+#MYMODULE = $(MODULES)/my-module
 
-# If you don't want to install files into $(TOP) then define
-# INSTALL_LOCATION_APP here:
-#INSTALL_LOCATION_APP=<fullpathname>
+# If using the sequencer, point SNCSEQ at its top directory:
+#SNCSEQ = $(MODULES)/seq-ver
 
-# Define path to sequencer if needed
-#SNCSEQ=_SNCSEQ_
+# EPICS_BASE should appear last so earlier modules can override stuff:
+EPICS_BASE = /home/leblanc/EPICS/epics-base
 
-# Asyn
-ASYN = /usr/local/epics/R3.14.12/modules/soft/synApps_5_6/support/asyn-trunk
+# Set RULES here if you want to use build rules from somewhere
+# other than EPICS_BASE:
+#RULES = $(MODULES)/build-rules
 
-# EPICS_BASE usually appears last so other apps can preempt definitions
-EPICS_BASE=/home/leblanc/EPICS/TEST/KS_34980A_EPICS
+# These lines allow developers to override these RELEASE settings
+# without having to modify this file directly.
+-include $(TOP)/../RELEASE.local
+-include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
+-include $(TOP)/configure/RELEASE.local
