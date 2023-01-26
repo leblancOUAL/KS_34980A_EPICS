@@ -16,3 +16,43 @@ getD {
     in "%d";
     ExtraInput = Ignore;
 }
+
+getResistance {
+    out "measure:resistance? (@\$1)";
+    in "%E";
+}
+
+getVoltageDC {
+    out "measure:voltage:dc? \$1,\$2,(@\$3)";
+    in "%E";
+}
+
+# setOutputOff {
+#     out "output:state off (@\$1)";
+# }
+
+# setOutputOn {
+#     out "output:state on (@%s)";
+# }
+
+# getOutputState {
+#     out "output:state? (@%s)"
+#     in "%f"
+# }
+
+# setRouteOpen {
+#     out "route:open (@%s)";
+# }
+
+# setRouteClose {
+#     out "route:CLOSE (@%s)";
+# }
+
+# setVoltageLevel {
+#     out "source:voltage:level %f (@%s)";
+# }
+
+# getVoltageDC {
+#     out "measure:voltage:dc? %f,%f,(@%s)";
+#     in "%E"
+# }
