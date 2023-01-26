@@ -17,9 +17,15 @@ KS_34980A_EPICStest_DBD += base.dbd
 
 # Include dbd files from all support applications:
 #KS_34980A_EPICStest_DBD += xxx.dbd
+KS_34980A_EPICStest_DBD += calcSupport.dbd
+KS_34980A_EPICStest_DBD += stream.dbd
+KS_34980A_EPICStest_DBD += asyn.dbd
+KS_34980A_EPICStest_DBD += drvAsynSerialPort.dbd 
+KS_34980A_EPICStest_DBD += drvAsynIPPort.dbd
 
 # Add all the support libraries needed by this IOC
 #KS_34980A_EPICStest_LIBS += xxx
+KS_34980A_EPICStest_LIBS += stream asyn calc
 
 # KS_34980A_EPICStest_registerRecordDeviceDriver.cpp derives from KS_34980A_EPICStest.dbd
 KS_34980A_EPICStest_SRCS += KS_34980A_EPICStest_registerRecordDeviceDriver.cpp

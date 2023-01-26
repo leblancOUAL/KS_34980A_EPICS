@@ -1,0 +1,5 @@
+SUPPORT=/home/leblanc/EPICS/support
+ASYN=$(SUPPORT)/asyn
+CALC=$(SUPPORT)/calc
+STREAM=$(SUPPORT)/StreamDevice
+EPICS_BASE=/home/leblanc/EPICS/epics-base
