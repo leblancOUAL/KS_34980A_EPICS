@@ -7,14 +7,14 @@
 record(stringin, "$(P)$(R)IDN") {
   field(DESC, "SCPI identification string")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getIDN(39) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getIDN(39) $(PORT) $(A)")
   field(PINI, "YES")
 }
 
 record(waveform, "$(P)$(R)IDNwf") {
   field(DESC, "SCPI identification string")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getIDN(199) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getIDN(199) $(PORT) $(A)")
   field(PINI, "YES")
   field(FTVL, "CHAR")
   field(NELM, "200")
@@ -23,55 +23,55 @@ record(waveform, "$(P)$(R)IDNwf") {
 record(bo, "$(P)$(R)RST") {
   field(DESC, "SCPI Reset")
   field(DTYP, "stream")
-  field(OUT, "@KS_34980A_EPICS.proto cmd(*RST) $(PORT) $(A)")
+  field(OUT, "@devKS_34980A_EPICS.proto cmd(*RST) $(PORT) $(A)")
 }
 
 record(bo, "$(P)$(R)CLS") {
   field(DESC, "SCPI Clear status")
   field(DTYP, "stream")
-  field(OUT, "@KS_34980A_EPICS.proto cmd(*CLS) $(PORT) $(A)")
+  field(OUT, "@devKS_34980A_EPICS.proto cmd(*CLS) $(PORT) $(A)")
 }
 
 record(longin, "$(P)$(R)GetSTB") {
   field(DESC, "SCPI get status byte")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getD(*STB) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getD(*STB) $(PORT) $(A)")
 }
 
 record(longin, "$(P)$(R)GetESR") {
   field(DESC, "SCPI get event status")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getD(*ESR) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getD(*ESR) $(PORT) $(A)")
 }
 
 record(longout, "$(P)$(R)SetESE") {
   field(DESC, "SCPI enable event status")
   field(DTYP, "stream")
-  field(OUT, "@KS_34980A_EPICS.proto setD(*ESE) $(PORT) $(A)")
+  field(OUT, "@devKS_34980A_EPICS.proto setD(*ESE) $(PORT) $(A)")
 }
 
 record(longin, "$(P)$(R)GetESE") {
   field(DESC, "SCPI enabled event status")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getD(*ESE) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getD(*ESE) $(PORT) $(A)")
 }
 
 record(longout, "$(P)$(R)SetSRE") {
   field(DESC, "SCPI enable service requests")
   field(DTYP, "stream")
-  field(OUT, "@KS_34980A_EPICS.proto setD(*SRE) $(PORT) $(A)")
+  field(OUT, "@devKS_34980A_EPICS.proto setD(*SRE) $(PORT) $(A)")
 }
 
 record(longin, "$(P)$(R)GetSRE") {
   field(DESC, "Enabled service requests")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getD(*SRE) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getD(*SRE) $(PORT) $(A)")
 }
 
 record(longin, "$(P)$(R)GetOPC") {
   field(DESC, "Output completion status")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getD(*OPC) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getD(*OPC) $(PORT) $(A)")
 }
 
 ## EAL Alphatross specific records
@@ -79,7 +79,7 @@ record(longin, "$(P)$(R)GetOPC") {
 # {
 #     field(DESC, "")
 #     field(DTYP, "stream")
-#     field(INP,  "@KS_34980A_EPICS.proto () $(PORT) $(A)")
+#     field(INP,  "@devKS_34980A_EPICS.proto () $(PORT) $(A)")
 # }
 # the readbacks aren't used in the existing Alphatross code.  
 # maybe we don't need these?  Maybe we should use them?  TBD.
@@ -89,14 +89,14 @@ record(longin, "$(P)$(R)GetOPC") {
 # {
 #     field(DESC, "Get Alphatross Extractor Voltage")
 #     field(DTYP, "stream")
-#     field(INP,  "@KS_34980A_EPICS.proto () $(PORT) $(A)")
+#     field(INP,  "@devKS_34980A_EPICS.proto () $(PORT) $(A)")
 # }
 
 
 record(ai, "$(P)$(R)getVacuumLevelRaw") {
   field(DESC, "Alphatross Vacuum Level Raw Measurement)")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5012) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5012) $(PORT) $(A)")
   field(PINI, "YES")
   # field(SCAN, "10 second")
   field(FLNK, "$(P)$(R)getVacuumLevel")
@@ -115,7 +115,7 @@ record(calc, "$(P)$(R)getVacuumLevel") {
 record(ai, "$(P)$(R)IGStatus") {
   field(DESC, "Alphatross Ion Gauge Status (on/off)")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getResistance(5013) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getResistance(5013) $(PORT) $(A)")
   field(PINI, "YES")
   field(SCAN, "Passive")
 }
@@ -123,7 +123,7 @@ record(ai, "$(P)$(R)IGStatus") {
 record(ai, "$(P)$(R)PressureOKHE4Raw") {
   field(DESC, "Alphatross HE4 OK/NG Raw Measurement")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(100,0.1,5014) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(100,0.1,5014) $(PORT) $(A)")
   field(PINI, "YES")
   field(SCAN, "Passive")
   # field(SCAN, "10 second")
@@ -143,75 +143,75 @@ record(calc, "$(P)$(R)PressureOKHE4") {
 record(ai, "$(P)$(R)PressureOKHE3") {
   field(DESC, "Alphatross HE3 Pressure OK (on/off)")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getResistance(5015) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getResistance(5015) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getProbeCurrent") {
   field(DESC, "Get Alphatross Probe Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5016) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5016) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getExtractorCurrent") {
   field(DESC, "Get Alphatross Extractor Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5017) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5017) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getFocusCurrent") {
   field(DESC, "Get Alphatross Focus Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5018) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5018) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getOvenTemperature") {
   field(DESC, "Get Alphatross Oven Temperature")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5019) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5019) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getChamberTemperature") {
   field(DESC, "Get Alphatross Chamber Temperature")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5020) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5020) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getSteererPlusCurrent") {
   field(DESC, "Get Alphatross Steerer + Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5021) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5021) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getSteererMinusCurrent") {
   field(DESC, "Get Alphatross Steerer - Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5022) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5022) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getBiasCurrent") {
   field(DESC, "Get Alphatross Bias Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5023) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5023) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a human readable value
 record(ai, "$(P)$(R)getLensCurrent") {
   field(DESC, "Get Alphatross Lens Current")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getVoltageDC(10,0.1,5024) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5024) $(PORT) $(A)")
 }
 
 # FIXME: Need to convert this to a binary input
 record(ai, "$(P)$(R)getSourceStatus") {
   field(DESC, "Get Alphatross Source Status")
   field(DTYP, "stream")
-  field(INP, "@KS_34980A_EPICS.proto getResistance(5025) $(PORT) $(A)")
+  field(INP, "@devKS_34980A_EPICS.proto getResistance(5025) $(PORT) $(A)")
 }

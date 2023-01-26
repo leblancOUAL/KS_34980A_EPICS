@@ -27,3 +27,6 @@ O.*/
 *.log
 .*.swp
 .DS_Store
+
+#st.cmd debugging info
+logfile.txt
