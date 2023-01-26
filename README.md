@@ -1,12 +1,38 @@
 # Basic documentation for getting something working with StreamDevice
 
+These are the notes that I've made on getting EPICS to talk to the control system 
+at the Edwards Accelerator Lab at Ohio University.  These notes are rough, and
+mostly intendedd for my own consumption.  Eventually I'll turn them into a disaster 
+recovery document.
+
+All of these instructions were tested on "CentOS Linux release 7.9.2009 (Core)" 
+running on an older desktop PC with an Intel(R) Core(TM) i5-2500 CPU and 8 gigs
+of ram.  
+
+EPICS base was compiled using the instructions at 
+https://docs.epics-controls.org/projects/how-tos/en/latest/index.html
+
+I have the following in my .bashrc to support EPICS
+
+```
+export EPICS_BASE=${HOME}/EPICS/epics-base
+export EPICS_HOST_ARCH=$(${EPICS_BASE}/startup/EpicsHostArch)
+export PATH=${EPICS_BASE}/bin/${EPICS_HOST_ARCH}:${PATH}
+export SUPPORT=${HOME}/EPICS/support
+export ASYN=${SUPPORT}/asyn
+export CALC=${SUPPORT}/calc
+export STREAM=${SUPPORT}/StreamDevice
+export EPICS_CA_ADDR_LIST=127.0.0.1
+```
+
 ## Building StreamDevice
 EPICS StreamDevice home page is at: https://paulscherrerinstitute.github.io/StreamDevice/
 The Github page is at: https://github.com/paulscherrerinstitute/StreamDevice
 
-It also requires Asyn, calc
+It also requires Asyn, calc.
+
 NOT needed are at least: stream (obsolete), ipac (looks narrowly domain specific), SNCSEQ (again, 
-narrowly domain specific), sscan (used for positioning), 
+narrowly domain specific), sscan (used for positioning).
 
 Asyn github page is at: https://github.com/epics-modules/asyn
 Calc github page is at: https://github.com/epics-modules/calc
