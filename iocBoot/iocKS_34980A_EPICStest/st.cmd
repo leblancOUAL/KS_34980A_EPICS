@@ -9,7 +9,7 @@ epicsEnvSet "STREAM_PROTOCOL_PATH" "$(TOP)/db"
 # Allow PV name prefixes and serial port name to be set from the environment 
 epicsEnvSet "P" "$(P=KS_34980A_EPICS)" 
 epicsEnvSet "R" "$(R=test)" 
-epicsEnvSet "HOST" "$(HOST=10.0.0.105)"
+epicsEnvSet "HOST" "$(HOST=10.0.0.106)"
 epicsEnvSet "PORT" "$(PORT=5025)"
 
 ############################################################################### 
