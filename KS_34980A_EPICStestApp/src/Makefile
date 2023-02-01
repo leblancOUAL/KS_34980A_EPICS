@@ -22,10 +22,14 @@ KS_34980A_EPICStest_DBD += stream.dbd
 KS_34980A_EPICStest_DBD += asyn.dbd
 KS_34980A_EPICStest_DBD += drvAsynSerialPort.dbd 
 KS_34980A_EPICStest_DBD += drvAsynIPPort.dbd
+KS_34980A_EPICStest_DBD += PVAServerRegister.dbd
+KS_34980A_EPICStest_DBD += qsrv.dbd
 
 # Add all the support libraries needed by this IOC
 #KS_34980A_EPICStest_LIBS += xxx
-KS_34980A_EPICStest_LIBS += stream asyn calc
+KS_34980A_EPICStest_LIBS += stream asyn calc qsrv
+KS_34980A_EPICStest_LIBS += pvAccessIOC
+KS_34980A_EPICStest_LIBS += $(EPICS_BASE_PVA_CORE_LIBS)
 
 # KS_34980A_EPICStest_registerRecordDeviceDriver.cpp derives from KS_34980A_EPICStest.dbd
 KS_34980A_EPICStest_SRCS += KS_34980A_EPICStest_registerRecordDeviceDriver.cpp
