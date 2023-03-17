@@ -17,8 +17,18 @@ getD {
     ExtraInput = Ignore;
 }
 
-getResistance {
+getResistanceAuto {
     out "measure:resistance? (@\$1)";
+    in "%E";
+}
+
+getResistance {
+    out "measure:resistance? \$1,\$2,(@\$3)";
+    in "%E";
+}
+
+getVoltageDCAuto {
+    out "measure:voltage:dc? (@\$1)";
     in "%E";
 }
 
