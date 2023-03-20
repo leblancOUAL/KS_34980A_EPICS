@@ -93,125 +93,85 @@ record(longin, "$(P)$(R)GetOPC") {
 # }
 
 
-record(ai, "$(P)$(R)getVacuumLevelRaw") {
-  field(DESC, "Alphatross Vacuum Level Raw Measurement)")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5012) $(PORT) $(A)")
-  field(PINI, "YES")
-  # field(SCAN, "10 second")
-  field(FLNK, "$(P)$(R)getVacuumLevel")
+# record(ai, "$(P)$(R)getVacuumLevelRaw") {
+#   field(DESC, "Alphatross Vacuum Level Raw Measurement)")
+#   field(DTYP, "stream")
+#   field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(5012) $(PORT) $(A)")
+#   field(PINI, "YES")
+#   # field(SCAN, "10 second")
+#   field(FLNK, "$(P)$(R)getVacuumLevel")
+# }
+
+# record(calc, "$(P)$(R)getVacuumLevel") {
+#   field(DESC, "Alphatross Vacuum Level")
+#   field(CALC, "10^(a-10)")
+#   field(INPA, "$(P)$(R)getVacuumLevelRaw")
+#   field(PINI, "YES")
+#   field(SCAN, "Passive")
+#   field(EGU, "Torr")
+# }
+
+record(ai, "$(P)$(R)switcherMagnetVoltage") {
+    field(DESC, "Switcher Magnet Voltage")
+    field(DTYP, "stream")
+    # field(SCAN, "1 second")
+    field(SCAN, "Passive")
+    field(INP,  "@devKS_34980A_EPICS.proto getVoltageDC(100,0.0001,1001) $(PORT) $(A)")
+    field(EGU, "Volts")
+    field(PINI, "YES")
 }
 
-record(calc, "$(P)$(R)getVacuumLevel") {
-  field(DESC, "Alphatross Vacuum Level")
-  field(CALC, "10^(a-10)")
-  field(INPA, "$(P)$(R)getVacuumLevelRaw")
-  field(PINI, "YES")
-  field(SCAN, "Passive")
-  field(EGU, "Torr")
+record(ai, "$(P)$(R)switcherMagnetCurrent") {
+    field(DESC, "Switcher Magnet Current")
+    field(DTYP, "stream")
+    # field(SCAN, "1 second")
+    field(SCAN, "Passive")
+    field(INP,  "@devKS_34980A_EPICS.proto getVoltageDC(0.1,0.0000001,1002) $(PORT) $(A)")
+    field(EGU, "Amps")
+    field(ASLO, "10000")
+    field(PINI, "YES")
 }
 
-# FIXME: Need to convert this to a binary input
-record(ai, "$(P)$(R)IGStatus") {
-  field(DESC, "Alphatross Ion Gauge Status (on/off)")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getResistance(5013) $(PORT) $(A)")
-  field(PINI, "YES")
-  field(SCAN, "Passive")
+# record(calc, "$(P)$(R)switcherMagnetPower") {
+#     field(DESC, "Switcher Magnet Power")
+#     field(CALC, "a*b")
+#     field(INPA, "$(P)$(R)switcherMagnetVoltage")
+#     field(INPB, "$(P)$(R)switcherMagnetCurrent")
+#     field(EGU, "Watts")
+#     field(SCAN, "1 second")
+#     field(PREC, "1")      # Seems to have no effect.  Maybe UI hints?
+# }
+
+record(ai, "$(P)$(R)readOutput1") {
+    field(DESC, "Test Output 1")
+    field(DTYP, "stream")
+    # field(SCAN, "1 second")
+    field(SCAN, "Passive")
+    field(INP,  "@devKS_34980A_EPICS.proto getSourceVoltage(2001) $(PORT) $(A)")
+    field(PINI, "YES")
 }
 
-record(ai, "$(P)$(R)PressureOKHE4Raw") {
-  field(DESC, "Alphatross HE4 OK/NG Raw Measurement")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(100,0.1,5014) $(PORT) $(A)")
-  field(PINI, "YES")
-  field(SCAN, "Passive")
-  # field(SCAN, "10 second")
-  field(FLNK, "$(P)$(R)PressureOKHE4")
+record(ao, "$(P)$(R)writeOutput1") {
+    field(DESC, "Write to Test Output 1")
+    field(DTYP, "stream")
+    field(PREC, "3")
+    field(EGU,  "Volts")
+    field(SCAN, "Passive")
+    field(OUT, "@devKS_34980A_EPICS.proto setSourceVoltage(3,2001) $(PORT) $(A)" )
+    field(PINI, "YES")
+    field(VAL, "0")
 }
 
-# FIXME: Need to convert this to a binary input
-record(calc, "$(P)$(R)PressureOKHE4") {
-  field(DESC, "Alphatross HE4 Pressure OK (on/off)")
-  field(CALC, A<5)
-  field(INPA, "PressureOKHE4Raw")
-  field(PINI, "YES")
-  field(SCAN, "Passive")
-}
-
-# FIXME: Need to convert this to a binary input
-record(ai, "$(P)$(R)PressureOKHE3") {
-  field(DESC, "Alphatross HE3 Pressure OK (on/off)")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getResistance(5015) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getProbeCurrent") {
-  field(DESC, "Get Alphatross Probe Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5016) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getExtractorCurrent") {
-  field(DESC, "Get Alphatross Extractor Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5017) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getFocusCurrent") {
-  field(DESC, "Get Alphatross Focus Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5018) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getOvenTemperature") {
-  field(DESC, "Get Alphatross Oven Temperature")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5019) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getChamberTemperature") {
-  field(DESC, "Get Alphatross Chamber Temperature")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5020) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getSteererPlusCurrent") {
-  field(DESC, "Get Alphatross Steerer + Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5021) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getSteererMinusCurrent") {
-  field(DESC, "Get Alphatross Steerer - Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5022) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getBiasCurrent") {
-  field(DESC, "Get Alphatross Bias Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5023) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a human readable value
-record(ai, "$(P)$(R)getLensCurrent") {
-  field(DESC, "Get Alphatross Lens Current")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getVoltageDC(10,0.1,5024) $(PORT) $(A)")
-}
-
-# FIXME: Need to convert this to a binary input
-record(ai, "$(P)$(R)getSourceStatus") {
-  field(DESC, "Get Alphatross Source Status")
-  field(DTYP, "stream")
-  field(INP, "@devKS_34980A_EPICS.proto getResistance(5025) $(PORT) $(A)")
+record(bi, "$(P)$(R)stateOutput1") {
+    field(DESC, "Output 1 State")
+    field(DTYP, "stream")
+    # field(VAL,  "value")
+    field(ZNAM, "Off")    
+    # field(ZSV, "NO_ALARM MINOR MAJOR")
+    field(ONAM, "On")     
+    # field(OSV, "NO_ALARM MINOR MAJOR")
+    # field(SCAN, "1 second")
+    field(SCAN, "Passive")
+    field(INP,  "@devKS_34980A_EPICS.proto getSourceState(2001) $(PORT) $(A)")
+    field(PINI, "YES")
 }

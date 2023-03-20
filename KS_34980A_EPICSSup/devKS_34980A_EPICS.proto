@@ -37,18 +37,27 @@ getVoltageDC {
     in "%E";
 }
 
-# setOutputOff {
+getSourceVoltage {
+    out "source:voltage? (@\$1)";
+    in "%E";
+}
+
+setSourceVoltage {
+    out "source:voltage \$1,(@\$2)";
+}
+
+# setSourceOff {
 #     out "output:state off (@\$1)";
 # }
 
-# setOutputOn {
-#     out "output:state on (@%s)";
+# setSourceOn {
+#     out "output:state on (@\$1)";
 # }
 
-# getOutputState {
-#     out "output:state? (@%s)"
-#     in "%f"
-# }
+getSourceState {
+    out "output:state? (@\$1)";
+    in "%b";
+}
 
 # setRouteOpen {
 #     out "route:open (@%s)";
@@ -62,7 +71,3 @@ getVoltageDC {
 #     out "source:voltage:level %f (@%s)";
 # }
 
-# getVoltageDC {
-#     out "measure:voltage:dc? %f,%f,(@%s)";
-#     in "%E"
-# }
