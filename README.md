@@ -88,7 +88,7 @@ Same bat story, new bat channel.
 git clone https://github.com/paulscherrerinstitute/StreamDevice.git
 ```
 
-Create `StreamDevice\configure\RELEASE.local` and fill it with:
+Create `StreamDevice/configure/RELEASE.local` and fill it with:
 
 ```
 SUPPORT=/home/leblanc/EPICS/support
@@ -98,7 +98,7 @@ PCRE=
 EPICS_BASE=/home/leblanc/EPICS/epics-base
 ```
 
-And next make a `StreamDevice\configure\RELEASE.Common.linux-x86_64` and populate it with:
+And next make a `StreamDevice/configure/RELEASE.Common.linux-x86_64` and populate it with:
 
 ```
 PCRE_INCLUDE=/usr/include
