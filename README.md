@@ -39,6 +39,11 @@ Calc github page is at: https://github.com/epics-modules/calc
 
 ### Calc
 First, calc, because asyn depends on calc.
+
+```
+git clone https://github.com/epics-modules/calc.git
+```
+
 Create calc/configure/RELEASE.local and put in the following
 
 ```
