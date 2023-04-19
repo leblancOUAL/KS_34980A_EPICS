@@ -37,6 +37,14 @@ narrowly domain specific), sscan (used for positioning).
 Asyn github page is at: https://github.com/epics-modules/asyn
 Calc github page is at: https://github.com/epics-modules/calc
 
+
+First, create a SUPPORT directory.
+
+```
+mkdir $HOME/EPICS/SUPPORT
+cd $HOME/EPICS/SUPPORT
+```
+
 ### Calc
 First, calc, because asyn depends on calc.
 
