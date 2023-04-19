@@ -56,6 +56,11 @@ Then run `make -j4` (pick a number, but leaving it off makes the build SLOW)
 
 ### Asyn
 Now that we have calc, let's do asyn.
+
+```
+git clone https://github.com/epics-modules/asyn.git
+```
+
 Similarly, create a `asyn/configure/RELEASE.local` that contains:
 
 ```
