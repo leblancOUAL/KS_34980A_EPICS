@@ -83,6 +83,11 @@ Hopefully no errors on either of these, so that we can go on to the next step.
 
 ### StreamDevice
 Same bat story, new bat channel.
+
+```
+git clone https://github.com/paulscherrerinstitute/StreamDevice.git
+```
+
 Create `StreamDevice\configure\RELEASE.local` and fill it with:
 
 ```
