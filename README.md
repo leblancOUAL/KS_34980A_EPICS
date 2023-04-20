@@ -41,8 +41,8 @@ Calc github page is at: https://github.com/epics-modules/calc
 First, create a SUPPORT directory.
 
 ```
-mkdir $HOME/EPICS/SUPPORT
-cd $HOME/EPICS/SUPPORT
+mkdir ${HOME}/EPICS/support
+cd ${HOME}/EPICS/support
 ```
 
 ### Calc
@@ -77,7 +77,9 @@ CALC=$(SUPPORT)/calc
 EPICS_BASE=/home/leblanc/EPICS/epics-base
 ```
 
-and run `make -j4` to get things built.
+Next, edit configure/CONFIG_SITE and uncomment the line `# TIRPC=YES`
+
+Then run `make -j4` to get things built.
 
 Hopefully no errors on either of these, so that we can go on to the next step.
 
